@@ -23,7 +23,7 @@ function RedirectPage() {
       try {
         sessionStorage.setItem(storageKey, 'true');
 
-        const API_BASE_URL = config.VITE_API_URL|| 'http://localhost:8080';
+        const API_BASE_URL = config.SERVER_API_URL;
         window.location.href = `${API_BASE_URL}/${code}`;
       } catch (err) {
         console.error('Redirect error:', err);

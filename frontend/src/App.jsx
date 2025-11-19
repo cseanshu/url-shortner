@@ -1,12 +1,21 @@
-import { useState } from 'react'
-import './App.css'
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Layout from './components/Layout';
+import Dashboard from './pages/Dashboard';
+import StatsPage from './pages/StatsPage';
+import RedirectPage from './pages/RedirectPage';
 
 function App() {
   return (
-    <>
-      <h1 className='mt-1.5 bg-amber-800 text-gray-700'>Url-shortner</h1>
-    </>
-  )
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Dashboard />} />
+          <Route path="code/:code" element={<StatsPage />} />
+        </Route>
+        <Route path="/:code" element={<RedirectPage />} />
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;

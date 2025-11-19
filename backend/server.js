@@ -2,7 +2,7 @@ const config=require('../backend/config');
 const express=require('express');
 const {PrismaClient}=require('@prisma/client');
 const prisma= new PrismaClient();
-const server=express();
+const app=express();
 
 async function checkDatabase(){
     try{
@@ -13,7 +13,7 @@ async function checkDatabase(){
        console.log('error while connecting to database:',err);
     }
 }
-server.listen(config.SERVER_PORT,async()=>{
+app.listen(config.SERVER_PORT,async()=>{
     await checkDatabase();
     console.log(`server is listening at port:${config.SERVER_PORT}`);
 })

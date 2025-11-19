@@ -1,9 +1,13 @@
 const config=require('../backend/config');
 const express=require('express');
+const cors=require('cors')
 const {PrismaClient}=require('@prisma/client');
+const router = require('./src/routes/urlroutes');
 const prisma= new PrismaClient();
 const app=express();
-
+app.use(cors());
+app.use(express.json());
+app.use('/',router)
 async function checkDatabase(){
     try{
         await prisma.$connect();

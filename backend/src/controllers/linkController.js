@@ -49,7 +49,9 @@ async function createLink(req, res) {
         code: link.code,
         targetUrl: link.targetUrl,
         clicks: link.clicks,
-        createdAt: link.createdAt
+        createdAt: link.createdAt,
+        updatedAt: link.updatedAt,
+        lastClickedAt: link.lastClickedAt
       }
     });
 

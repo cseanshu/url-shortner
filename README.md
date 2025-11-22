@@ -63,8 +63,6 @@ Before running this application, make sure you have the following installed:
 
 - Node.js (v16 or higher)
 - PostgreSQL (v12 or higher)
-- npm or yarn package manager
-
 ## Installation
 
 ### 1. Clone the repository
@@ -81,12 +79,6 @@ cd backend
 
 # Install dependencies
 npm install
-
-# Create a .env file and configure your database
-# Add the following environment variables:
-# DATABASE_URL="postgresql://user:password@localhost:5432/url_shortener"
-# SERVER_PORT=3000
-# DB_PORT=5432
 
 # Run database migrations
 npx prisma migrate deploy
@@ -108,55 +100,11 @@ cd frontend
 # Install dependencies
 npm install
 
-# Create a .env file (if needed) and configure API endpoint
-# VITE_API_URL=http://localhost:3000
-
 # Start the development server
 npm run dev
 ```
 
-The frontend will be available at `http://localhost:5173` and the backend at `http://localhost:3000`.
-
 ## Configuration
-
-### Backend Configuration
-
-Create a `config.js` file in the backend directory (or use environment variables):
-
-```javascript
-module.exports = {
-  SERVER_PORT: process.env.SERVER_PORT || 3000,
-  DB_PORT: process.env.DB_PORT || 5432,
-};
-```
-
-Create a `.env` file in the backend directory:
-
-```env
-DATABASE_URL="postgresql://username:password@localhost:5432/database_name"
-SERVER_PORT=3000
-DB_PORT=5432
-```
-
-### Frontend Configuration
-
-The frontend uses Vite for configuration. Update the API endpoint in [src/services/api.js](frontend/src/services/api.js) if needed.
-
-## Database Schema
-
-The application uses a single `Link` model:
-
-```prisma
-model Link {
-  id            String    @id @default(uuid())
-  code          String    @unique
-  targetUrl     String
-  clicks        Int       @default(0)
-  lastClickedAt DateTime?
-  createdAt     DateTime  @default(now())
-  updatedAt     DateTime  @updatedAt
-}
-```
 
 ## API Endpoints
 
